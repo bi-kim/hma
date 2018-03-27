@@ -33,16 +33,14 @@ class TaskList extends Component {
     }
 }
 let mapStateToProps = (state) => {
-    console.log(state.modeReducers.agent);
     return {
         datas: (function () {
             let temp = [];
             for(var i = 0; i < state.tasksReducers.length; i++) {
                 for(var j = 0; j < state.tasksReducers[i].length; j++) {
-                    test.push(state.tasksReducers[i][j]);
+                    temp.push(state.tasksReducers[i][j]);
                 }
             }
-            console.log(test);
             return temp;
         }()),
         mode: state.modeReducers.agent
