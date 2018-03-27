@@ -9,7 +9,7 @@ class TaskList extends Component {
             <List divided relaxed>
                 {
                     this.props.datas.map((task, i) => {
-                        {task = JSON.parse(task)}
+                        task = JSON.parse(task)
                         return (<List.Item key={i}>
                             <List.Icon name='cloud' size='large' verticalAlign='middle' />
                             <List.Content>
@@ -35,7 +35,16 @@ class TaskList extends Component {
 let mapStateToProps = (state) => {
     console.log(state.modeReducers.agent);
     return {
-        datas: state.tasksReducers,
+        datas: (function () {
+            let temp = [];
+            for(var i = 0; i < state.tasksReducers.length; i++) {
+                for(var j = 0; j < state.tasksReducers[i].length; j++) {
+                    test.push(state.tasksReducers[i][j]);
+                }
+            }
+            console.log(test);
+            return temp;
+        }()),
         mode: state.modeReducers.agent
     };
 }
